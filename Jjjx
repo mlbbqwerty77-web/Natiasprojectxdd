@@ -1,0 +1,380 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NATIA // SYSTEM</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at center, #280000 0%, #090000 45%, #000 100%);
+      color: #ff1a1a;
+      font-family: "Courier New", monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 0, 0, 0.03) 0px,
+        rgba(255, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      z-index: 10;
+    }
+
+    .container {
+      width: 94%;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px 0 50px;
+    }
+
+    .welcome {
+      text-align: center;
+      border: 2px solid #ff1111;
+      box-shadow:
+        0 0 10px #ff0000,
+        inset 0 0 20px rgba(255,0,0,.15);
+      padding: 20px;
+      margin-bottom: 20px;
+      animation: pulse 1.8s infinite;
+    }
+
+    .welcome h1 {
+      margin: 0;
+      font-size: clamp(24px, 7vw, 50px);
+      text-shadow: 0 0 15px red;
+    }
+
+    .welcome p {
+      color: #ff7777;
+      font-size: 16px;
+    }
+
+    .troll {
+      display: block;
+      width: 170px;
+      max-width: 60%;
+      margin: 15px auto;
+      filter: drop-shadow(0 0 12px red);
+      animation: troll 2s infinite alternate;
+    }
+
+    .terminal {
+      background: rgba(0, 0, 0, .9);
+      border: 1px solid #ff0000;
+      box-shadow: 0 0 15px rgba(255,0,0,.5);
+      padding: 15px;
+      min-height: 300px;
+      margin-bottom: 20px;
+    }
+
+    .terminal-title {
+      border-bottom: 1px solid #660000;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      color: #ff3333;
+    }
+
+    #terminal {
+      line-height: 1.65;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+
+    .line {
+      animation: appear .3s ease;
+    }
+
+    .success {
+      color: #ff3030;
+      font-weight: bold;
+      text-shadow: 0 0 8px red;
+    }
+
+    .warning {
+      color: #ff8a00;
+    }
+
+    .dim {
+      color: #7d3333;
+    }
+
+    .panel {
+      background: rgba(10,0,0,.9);
+      border: 1px solid #550000;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .panel h2 {
+      font-size: 18px;
+      margin-top: 0;
+      color: #ff2222;
+    }
+
+    .bar {
+      height: 15px;
+      background: #190000;
+      border: 1px solid #660000;
+      margin: 8px 0 15px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #700000, #ff0000);
+      box-shadow: 0 0 10px red;
+      transition: width 1s;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .status {
+      border: 1px solid #440000;
+      padding: 12px;
+      background: #080000;
+    }
+
+    .status span {
+      display: block;
+      color: #6f3333;
+      font-size: 12px;
+    }
+
+    .status strong {
+      color: #ff3030;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 14px;
+      color: #ff2222;
+      background: #090000;
+      border: 1px solid red;
+      font-family: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(255,0,0,.3);
+    }
+
+    button:hover {
+      background: #250000;
+      box-shadow: 0 0 18px red;
+    }
+
+    .footer {
+      text-align: center;
+      color: #4d1717;
+      margin-top: 25px;
+      font-size: 12px;
+    }
+
+    @keyframes pulse {
+      50% {
+        box-shadow:
+          0 0 25px red,
+          inset 0 0 30px rgba(255,0,0,.2);
+      }
+    }
+
+    @keyframes troll {
+      from { transform: rotate(-3deg) scale(1); }
+      to   { transform: rotate(3deg) scale(1.05); }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateX(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .terminal {
+        min-height: 330px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="welcome">
+    <img
+      class="troll"
+      src="https://i.imgflip.com/1bij.jpg"
+      alt="Trollface"
+    >
+
+    <h1>მოგესალმები NATIA</h1>
+    <p>შენ ხარ ხედვაში...</p>
+    <p class="success">⚠ SIMULATION MODE ACTIVATED ⚠</p>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-title">
+      █ NATIA // RED TERMINAL v4.0 █
+    </div>
+
+    <div id="terminal"></div>
+  </div>
+
+  <div class="panel">
+    <h2>⚡ SYSTEM SCAN</h2>
+
+    <div>NETWORK SCAN</div>
+    <div class="bar">
+      <div class="fill" id="bar1"></div>
+    </div>
+
+    <div>DATABASE SCAN</div>
+    <div class="bar">
+      <div class="fill" id="bar2"></div>
+    </div>
+
+    <div>SECURITY ANALYSIS</div>
+    <div class="bar">
+      <div class="fill" id="bar3"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>☠ SYSTEM STATUS</h2>
+
+    <div class="grid">
+      <div class="status">
+        <span>STATUS</span>
+        <strong>ACCESS GRANTED</strong>
+      </div>
+
+      <div class="status">
+        <span>MODE</span>
+        <strong>SIMULATION</strong>
+      </div>
+
+      <div class="status">
+        <span>NETWORK</span>
+        <strong>ONLINE</strong>
+      </div>
+
+      <div class="status">
+        <span>THREAT LEVEL</span>
+        <strong>UNKNOWN</strong>
+      </div>
+    </div>
+
+    <button onclick="startScan()">
+      ⚡ START RED SCAN ⚡
+    </button>
+  </div>
+
+  <div class="footer">
+    NATIA RED SYSTEM // VISUAL SIMULATION ONLY
+  </div>
+
+</div>
+
+<script>
+  const terminal = document.getElementById("terminal");
+
+  const messages = [
+    "[SYSTEM] Initializing RED terminal...",
+    "[SYSTEM] Loading visual interface...",
+    "[NETWORK] Searching simulated nodes...",
+    "[NETWORK] 192.0.2.15 detected",
+    "[NETWORK] 198.51.100.27 detected",
+    "[DATABASE] Checking simulated records...",
+    "[SECURITY] Running security analysis...",
+    "[WARNING] Unknown signal detected...",
+    "[SYSTEM] Establishing secure simulation...",
+    "[ACCESS] ACCESS GRANTED",
+    "",
+    ">>> მოგესალმები NATIA.",
+    ">>> შენ ხარ ხედვაში.",
+    ">>> Trollface protocol activated.",
+    ">>> SIMULATION COMPLETE."
+  ];
+
+  let index = 0;
+
+  function writeLine() {
+    if (index >= messages.length) return;
+
+    const line = document.createElement("div");
+    line.className = "line";
+
+    if (
+      messages[index].includes("WARNING")
+    ) {
+      line.classList.add("warning");
+    }
+
+    if (
+      messages[index].includes("GRANTED") ||
+      messages[index].includes("COMPLETE")
+    ) {
+      line.classList.add("success");
+    }
+
+    line.textContent = messages[index];
+
+    terminal.appendChild(line);
+    index++;
+
+    setTimeout(writeLine, 500);
+  }
+
+  function startScan() {
+    document.getElementById("bar1").style.width = "100%";
+
+    setTimeout(() => {
+      document.getElementById("bar2").style.width = "100%";
+    }, 700);
+
+    setTimeout(() => {
+      document.getElementById("bar3").style.width = "100%";
+    }, 1400);
+
+    terminal.innerHTML = "";
+    index = 0;
+    writeLine();
+  }
+
+  window.onload = () => {
+    setTimeout(writeLine, 700);
+  };
+</script>
+
+</body>
+</html>
